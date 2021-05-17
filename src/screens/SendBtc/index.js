@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useContext} from 'react';
 import { StyleSheet, 
         Image, 
         Text, 
@@ -18,10 +18,18 @@ import TitleHeader from '../../components/Title';
 import Rectangle from '../../components/Rectangle';
 import Button from '../../components/Button';
 
+import { OverallContext } from "../../../store";
+
+import BottomCard from '../../components/BottomCard';
+
+
 import { BlurView } from 'expo-blur';
 
-function SendBtcScreen() {
+function SendBtcScreen({navigation}) {
     const [value, changeValue] = React.useState({password:"",email:""});
+
+    const globalState = useContext(OverallContext);      
+    const {state, dispatch } = globalState;  
     
     const handleForm = (name, text) => {
         changeValue({...value, [name]:text})    
@@ -32,10 +40,19 @@ function SendBtcScreen() {
         style={styles.imageIcon}
     />)
 
+    const showBottomNav = () => {
+        dispatch({type:"showBottomCard", payload:true})
+    }
+
+
     return (
         <HiddenStatusBarView>
-     
-            <ScrollView style={styles.positioner}>
+        {
+            state.bottomCard &&
+            <BottomCard navigation={navigation} />
+        }    
+       
+            <View style={styles.positioner}>
                 <BigHeader title="Send Bitcoin" /> 
                 <DescriptiveHeader title="How much BTC would you like to Send?" /> 
                 <View style={styles.spacer32}/>
@@ -52,11 +69,14 @@ function SendBtcScreen() {
                     <Rectangle title="Kindly note that the fee selected will directly affect the delivery time of your transaction." />
                 </View>
                 <View style={styles.spacer32}/>
-                <Button title="Proceed" />
+                <Button title="Proceed" onPress={()=>showBottomNav()} />
                 <View style={styles.spacer16}/> 
+                
 
-            </ScrollView> 
+            </View> 
 
+            
+            
                    
         </HiddenStatusBarView>
     )

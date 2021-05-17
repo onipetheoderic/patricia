@@ -6,7 +6,10 @@ import AppLoading from 'expo-app-loading';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import SendBtc from './src/screens/SendBtc'
+import { OverallContextProvider } from "./store";
+
+import SendBtc from './src/screens/SendBtc';
+import ScanCode from './src/screens/ScanCode';
 
 import { ReemKufi_400Regular, useFonts, } from '@expo-google-fonts/reem-kufi';
 import {
@@ -69,16 +72,19 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator
-       screenOptions={{
-          headerShown: false,
-        }}
-      >
-        
-        <Stack.Screen name="SendBtc" component={SendBtc}/>
-      </Stack.Navigator>
-    </NavigationContainer>
+    <OverallContextProvider>
+      <NavigationContainer>
+        <Stack.Navigator
+        screenOptions={{
+            headerShown: false,
+          }}
+        >
+          
+          <Stack.Screen name="SendBtc" component={SendBtc}/>
+          <Stack.Screen name="ScanCode" component={ScanCode}/>
+        </Stack.Navigator>
+      </NavigationContainer>
+    </OverallContextProvider>
   );
   
 }

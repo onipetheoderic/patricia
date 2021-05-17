@@ -10,9 +10,9 @@ import PropTypes from 'prop-types';
 import styles from '../../styles/global_styles';
 import proceed from '../../../assets/images/proceed.png'
 
-function Button({title}) {
+function Button({title, onPress}) {
     return (
-        <TouchableOpacity style={styles.buttonCont}>           
+        <TouchableOpacity onPress={onPress} style={styles.buttonCont}>           
            <Text style={styles.btnText}>Proceed</Text>
            <View style={styles.imgCont}>
                 <Image source={proceed} style={styles.image24} />
@@ -23,7 +23,8 @@ function Button({title}) {
 }
 
 Button.propTypes = {
-    title: PropTypes.string.isRequired
+    title: PropTypes.string.isRequired,
+    onPress: PropTypes.func
 }
 
 export default Button;

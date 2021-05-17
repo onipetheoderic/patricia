@@ -10,6 +10,22 @@ export default StyleSheet.create({
         alignItems:'center',
         borderRadius:8
     },
+    containerSearch: {
+        width:'100%',
+        height:32,    
+        backgroundColor:palette.Line35,
+        alignSelf:'center',
+        flexDirection:'row',
+        alignItems:'center',
+        borderRadius:8
+    },
+    typeContSearch: {
+        height:56,
+        width:'5%',
+        marginLeft:16,
+        alignItems:'center',
+        justifyContent:'center'
+    },
     rowDirection: {
         flexDirection:'row'
     },

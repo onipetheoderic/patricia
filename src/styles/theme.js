@@ -6,5 +6,6 @@ export const palette = {
     Snow:'#EFF2F7',
     BaseBlue:'#032041',
     GrayOne:'#E5E9F2',
-    
+    Line35: '#EFF2F7',
+    PaleBlue:'#E8F7FF'
 }

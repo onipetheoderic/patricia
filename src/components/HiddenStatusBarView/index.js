@@ -11,7 +11,7 @@ import styles from '../../styles/global_styles';
 
 function HiddenStatusBarView(props) {
     return (
-        <View>
+        <View style={styles.overallCont}>
             <StatusBar
                 animated={true}
                 hidden={true} />
